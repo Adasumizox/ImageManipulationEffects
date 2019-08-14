@@ -15,7 +15,7 @@ public class Gui {
         menuBar.add(fileMenu);
         Action openAction = new OpenAction(imageComponent ,"Open", "This is a file open menu option", KeyEvent.VK_O);
         JMenuItem menuItemOpen = new JMenuItem(openAction);
-        Action saveAction = new SaveAction("Save", "This is a file save menu option", KeyEvent.VK_S);
+        Action saveAction = new SaveAction(imageComponent, "Save", "This is a file save menu option", KeyEvent.VK_S);
         JMenuItem menuItemSave = new JMenuItem(saveAction);
         fileMenu.add(menuItemOpen);
         fileMenu.add(menuItemSave);
