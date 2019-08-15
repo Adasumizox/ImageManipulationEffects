@@ -1,15 +1,23 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 class ImageJComponent extends JComponent {
     private Image image;
+    private BufferedImage imageEffect;
 
-    public Image getImage() {
+    Image getImage() {
         return image;
     }
 
     void setImage(Image image) {
         this.image = image;
+        this.imageEffect = (BufferedImage) image;
+        this.repaint();
+    }
+
+    void setBufferedImage(BufferedImage image) {
+        this.imageEffect = image;
         this.repaint();
     }
 
@@ -18,6 +26,6 @@ class ImageJComponent extends JComponent {
     }
 
     public void paint(Graphics g) {
-        g.drawImage(image, 0, 0, null);
+        g.drawImage(imageEffect, 0, 0, null);
     }
 }
