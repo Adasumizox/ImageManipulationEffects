@@ -1,9 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 public class Gui {
     public static void main(String... args) {
+        final String[] IMPLEMENTED_EFFECTS = {"Original","Grayscale","Blurred"};
+
         JFrame frame = new JFrame("Image manipulation");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 400);
@@ -22,7 +26,8 @@ public class Gui {
 
         JPanel footer = new JPanel();
         JLabel label = new JLabel("Choose effect");
-        JComboBox effects = new JComboBox();
+        JComboBox<String> effects = new JComboBox<>(IMPLEMENTED_EFFECTS);
+        effects.addItemListener(new ItemChangeListener(imageComponent));
         footer.add(label);
         footer.add(effects);
 
