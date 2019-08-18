@@ -10,7 +10,6 @@ import java.io.File;
 import java.io.IOException;
 
 class SaveAction extends AbstractAction {
-
     private ImageJComponent component;
 
     SaveAction(ImageJComponent comp, String text, String desc, Integer mnemonic) {
@@ -51,7 +50,7 @@ class SaveAction extends AbstractAction {
                 BufferedImage image = (BufferedImage) getComponentImage(this.component);
                 ImageIO.write(image, extension, file);
             } catch(IOException ex) {
-                System.out.println("Error: " + ex.getMessage());
+                ex.printStackTrace();
             }
         }
     }

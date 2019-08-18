@@ -3,8 +3,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 class ImageJComponent extends JComponent {
-    private Image image;
-    private BufferedImage imageEffect;
+    private Image image = null;
+    private BufferedImage imageEffect = null;
 
     Image getImage() {
         return image;
@@ -14,6 +14,10 @@ class ImageJComponent extends JComponent {
         this.image = image;
         this.imageEffect = (BufferedImage) image;
         this.repaint();
+    }
+
+    BufferedImage getBufferedImage() {
+        return imageEffect;
     }
 
     void setBufferedImage(BufferedImage image) {

@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 
 public class Gui {
     public static void main(String... args) {
-        final String[] IMPLEMENTED_EFFECTS = {"Original","Grayscale","Blurred"};
+        final String[] IMPLEMENTED_EFFECTS = {"Original","Grayscale","Blurred","Binarization", "MedianFilter", "SharpenFilter", "SobelFilter", "Dilatation", "Erosion"};
 
         JFrame frame = new JFrame("Image manipulation");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -28,8 +28,11 @@ public class Gui {
         JLabel label = new JLabel("Choose effect");
         JComboBox<String> effects = new JComboBox<>(IMPLEMENTED_EFFECTS);
         effects.addItemListener(new ItemChangeListener(imageComponent));
+        Action applyAction = new ApplyAction(imageComponent, "Apply", "This is button for saving effects", KeyEvent.VK_A);
+        JButton applyBtn = new JButton(applyAction);
         footer.add(label);
         footer.add(effects);
+        footer.add(applyBtn);
 
         frame.getContentPane().add(BorderLayout.NORTH, menuBar);
         frame.getContentPane().add(BorderLayout.CENTER, imageComponent);

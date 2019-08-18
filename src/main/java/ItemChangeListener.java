@@ -1,3 +1,5 @@
+import org.jetbrains.annotations.NotNull;
+
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.image.BufferedImage;
@@ -24,6 +26,25 @@ public class ItemChangeListener implements ItemListener {
                     break;
                 case "Blurred":
                     component.setBufferedImage(p.blur((BufferedImage) this.component.getImage()));
+                    break;
+                case "Binarization":
+                    component.setBufferedImage(p.binarizationThreshold((BufferedImage) this.component.getImage(), 127));
+                    break;
+                case "MedianFilter":
+                    component.setBufferedImage(p.medianFilter((BufferedImage) this.component.getImage()));
+                    break;
+                case "SharpenFilter":
+                    component.setBufferedImage(p.sharpenFilter((BufferedImage) this.component.getImage()));
+                    break;
+                case "SobelFilter":
+                    component.setBufferedImage(p.sobelFilter((BufferedImage) this.component.getImage()));
+                    break;
+                case "Dilatation":
+                    component.setBufferedImage(p.imageDilatation((BufferedImage) this.component.getImage()));
+                    break;
+                case "Erosion":
+                    component.setBufferedImage(p.imageErosion((BufferedImage) this.component.getImage()));
+                    break;
             }
         }
     }

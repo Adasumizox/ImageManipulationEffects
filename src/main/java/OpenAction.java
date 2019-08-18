@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 
 class OpenAction extends AbstractAction {
-
     private Image image;
     private ImageJComponent component;
 
