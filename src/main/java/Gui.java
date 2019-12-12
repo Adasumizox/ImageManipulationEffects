@@ -1,18 +1,23 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-
+//TODO: Organize everything in packages especially Actions
+//TODO: Add slider for binarization percent
+/**
+ * Main Gui class that creates entire user interface.
+ * @version 0.1.0
+ */
 public class Gui {
     public static void main(String... args) {
+        // effect implemented that we can use. If we create more we can simply add others to it.
         final String[] IMPLEMENTED_EFFECTS = {"Original","Grayscale","Blurred","Binarization", "MedianFilter", "SharpenFilter", "SobelFilter", "Dilatation", "Erosion"};
 
+        // creating frame and setting default width and height of it
         JFrame frame = new JFrame("Image manipulation");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 400);
 
-        ImageJComponent imageComponent = new ImageJComponent(null);
+        ImageJComponent imageComponent = new ImageJComponent();
 
         JMenuBar menuBar = new JMenuBar();
         JMenu fileMenu = new JMenu("File");

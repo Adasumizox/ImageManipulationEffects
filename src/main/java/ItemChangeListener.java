@@ -1,18 +1,30 @@
-import org.jetbrains.annotations.NotNull;
-
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.image.BufferedImage;
-import java.nio.Buffer;
 
+/**
+ * Simple ItemListener that will help us with selecting effects from our comboBox
+ * It's probably the best way to handle events when user click on option
+ * @version 0.1.0
+ */
 public class ItemChangeListener implements ItemListener {
+    // class object that holds methods providing effects that we will use
+    // should be static
     private Processing p = new Processing();
     private ImageJComponent component;
 
+    /**
+     * This simple constructor for class ItemChangeListener
+     * @param comp This is object of ImageJComponent that stores image
+     */
     ItemChangeListener(ImageJComponent comp) {
         this.component = comp;
     }
 
+    /**
+     * Simple method inherited from java.awt.event.ItemListener
+     * @param event ItemEvent event that will come when user select some option
+     */
     @Override
     public void itemStateChanged(ItemEvent event) {
         if (event.getStateChange() == ItemEvent.SELECTED) {

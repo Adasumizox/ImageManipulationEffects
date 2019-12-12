@@ -3,8 +3,17 @@ import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
 import java.awt.image.WritableRaster;
 import java.util.Arrays;
-
+/**
+ * Processing class that provides us with method that will allow us to apply effects on image.
+ * Class should be static that would been easier.
+ * @version 0.1.0
+ */
 class Processing {
+    /**
+     * complicated method that will copy image to avoid overwriting original image
+     * @param bufferedImage image that we want to deepCopy
+     * @return deep copy of BufferedImage
+     */
     private BufferedImage deepCopy(BufferedImage bufferedImage) {
         ColorModel cm = bufferedImage.getColorModel();
         boolean isAlphaPremultiplied = cm.isAlphaPremultiplied();
@@ -13,6 +22,13 @@ class Processing {
         return new BufferedImage(cm, raster, isAlphaPremultiplied, null);
     }
 
+
+    /**
+     * complicated method that will apply blur effect to image simply applying 1/9 * currentColor for every
+     * 3x3 matrix. It's complicated
+     * @param bufferedImage image that we want to applyEffect
+     * @return BufferedImage with effect
+     */
     BufferedImage blur(BufferedImage bufferedImage) {
         BufferedImage newImage = deepCopy(bufferedImage);
         for(int h = 1; h < newImage.getHeight() - 1; ++h){
@@ -39,6 +55,12 @@ class Processing {
         return newImage;
     }
 
+    /**
+     * complicated method that will apply medianFilter effect to image simply RGB value of median(half of array) for every
+     * 3x3 matrix. It's complicated
+     * @param bufferedImage image that we want to applyEffect
+     * @return BufferedImage with effect
+     */
     BufferedImage medianFilter(BufferedImage bufferedImage) {
         BufferedImage newImage = deepCopy(bufferedImage);
 
@@ -60,6 +82,11 @@ class Processing {
         return newImage;
     }
 
+    /**
+     * complicated method that will apply sharpenFilter effect to image
+     * @param bufferedImage image that we want to applyEffect
+     * @return BufferedImage with effect
+     */
     BufferedImage sharpenFilter(BufferedImage bufferedImage){
         BufferedImage newImage = deepCopy(bufferedImage);
         for(int h = 1; h < newImage.getHeight() - 1; ++h){
@@ -94,6 +121,12 @@ class Processing {
         return newImage;
     }
 
+    /**
+     * complicated method that will apply grayScale effect to image by choosing one of RGB value in our case Red
+     * and apllying it for every green and blue value for every pixel
+     * @param bufferedImage image that we want to applyEffect
+     * @return BufferedImage with effect
+     */
     BufferedImage grayScale(BufferedImage bufferedImage) {
         BufferedImage newImage = deepCopy(bufferedImage);
         for(int h = 0; h < bufferedImage.getHeight(); ++h) {
@@ -106,6 +139,11 @@ class Processing {
         return newImage;
     }
 
+    /**
+     * complicated method that will apply sobelFilter effect to image.
+     * @param bufferedImage image that we want to applyEffect
+     * @return BufferedImage with effect
+     */
     BufferedImage sobelFilter(BufferedImage bufferedImage){
         BufferedImage newImage = deepCopy(bufferedImage);
         newImage = grayScale(newImage);
@@ -153,6 +191,13 @@ class Processing {
         return newImage;
     }
 
+    /**
+     * complicated method that will apply binarization effect to image with certain Threshold.
+     * It takes sum of values from RGB of pixel and divide it by 3. We will get result if it is less than threshold
+     * we choose black color if it is more we just simply choose white
+     * @param bufferedImage image that we want to applyEffect
+     * @return BufferedImage with effect
+     */
     BufferedImage binarizationThreshold(BufferedImage bufferedImage, int threshold) {
         BufferedImage newImage = deepCopy(bufferedImage);
         for(int h = 0; h < bufferedImage.getHeight(); ++h) {
@@ -175,6 +220,12 @@ class Processing {
         return newImage;
     }
 
+    /**
+     * complicated method that will apply imageDilatation effect to image. It is recommended to use it with binarized image.
+     * It will simply increase/decrease edges of binarized image.
+     * @param bufferedImage image that we want to applyEffect
+     * @return BufferedImage with effect
+     */
     BufferedImage imageDilatation(BufferedImage bufferedImage) {
         BufferedImage newImage = deepCopy(bufferedImage);
 
@@ -196,6 +247,12 @@ class Processing {
         return newImage;
     }
 
+    /**
+     * complicated method that will apply imageErosion effect to image. It is recommended to use it with binarized image.
+     * It will simply increase/decrease edges of binarized image.
+     * @param bufferedImage image that we want to applyEffect
+     * @return BufferedImage with effect
+     */
     BufferedImage imageErosion(BufferedImage bufferedImage) {
         BufferedImage newImage = deepCopy(bufferedImage);
 
