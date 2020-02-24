@@ -1,10 +1,17 @@
+package com.adasumizox.gui;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-//TODO: Organize everything in packages especially Actions
+
+import com.adasumizox.gui.Actions.OpenAction;
+import com.adasumizox.gui.Actions.SaveAction;
+import com.adasumizox.gui.Components.*;
+import com.adasumizox.gui.Listeners.ItemChangeListener;
+
 //TODO: Add slider for binarization percent
 /**
- * Main Gui class that creates entire user interface.
+ * Main com.adasumizox.gui.Gui class that creates entire user interface.
  * @version 0.1.0
  */
 public class Gui {
@@ -33,7 +40,7 @@ public class Gui {
         JLabel label = new JLabel("Choose effect");
         JComboBox<String> effects = new JComboBox<>(IMPLEMENTED_EFFECTS);
         effects.addItemListener(new ItemChangeListener(imageComponent));
-        Action applyAction = new ApplyAction(imageComponent, "Apply", "This is button for saving effects", KeyEvent.VK_A);
+        Action applyAction = new com.adasumizox.gui.Actions.ApplyAction(imageComponent, "Apply", "This is button for saving effects", KeyEvent.VK_A);
         JButton applyBtn = new JButton(applyAction);
         footer.add(label);
         footer.add(effects);

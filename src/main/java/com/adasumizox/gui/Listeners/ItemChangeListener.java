@@ -1,3 +1,8 @@
+package com.adasumizox.gui.Listeners;
+
+import com.adasumizox.gui.Components.ImageJComponent;
+import com.adasumizox.processing.Processing;
+
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.image.BufferedImage;
@@ -14,10 +19,10 @@ public class ItemChangeListener implements ItemListener {
     private ImageJComponent component;
 
     /**
-     * This simple constructor for class ItemChangeListener
-     * @param comp This is object of ImageJComponent that stores image
+     * This simple constructor for class com.adasumizox.gui.Listeners.ItemChangeListener
+     * @param comp This is object of com.adasumizox.gui.Components.ImageJComponent that stores image
      */
-    ItemChangeListener(ImageJComponent comp) {
+    public ItemChangeListener(ImageJComponent comp) {
         this.component = comp;
     }
 

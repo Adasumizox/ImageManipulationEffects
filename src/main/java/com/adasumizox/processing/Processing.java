@@ -1,14 +1,16 @@
+package com.adasumizox.processing;
+
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
 import java.awt.image.WritableRaster;
 import java.util.Arrays;
 /**
- * Processing class that provides us with method that will allow us to apply effects on image.
+ * com.adasumizox.processing.Processing class that provides us with method that will allow us to apply effects on image.
  * Class should be static that would been easier.
  * @version 0.1.0
  */
-class Processing {
+public class Processing {
     /**
      * complicated method that will copy image to avoid overwriting original image
      * @param bufferedImage image that we want to deepCopy
@@ -29,7 +31,7 @@ class Processing {
      * @param bufferedImage image that we want to applyEffect
      * @return BufferedImage with effect
      */
-    BufferedImage blur(BufferedImage bufferedImage) {
+    public BufferedImage blur(BufferedImage bufferedImage) {
         BufferedImage newImage = deepCopy(bufferedImage);
         for(int h = 1; h < newImage.getHeight() - 1; ++h){
             for(int w = 1; w < newImage.getWidth() - 1; ++w){
@@ -61,7 +63,7 @@ class Processing {
      * @param bufferedImage image that we want to applyEffect
      * @return BufferedImage with effect
      */
-    BufferedImage medianFilter(BufferedImage bufferedImage) {
+    public BufferedImage medianFilter(BufferedImage bufferedImage) {
         BufferedImage newImage = deepCopy(bufferedImage);
 
         for(int h = 1; h < newImage.getHeight() - 1; ++h) {
@@ -87,7 +89,7 @@ class Processing {
      * @param bufferedImage image that we want to applyEffect
      * @return BufferedImage with effect
      */
-    BufferedImage sharpenFilter(BufferedImage bufferedImage){
+    public BufferedImage sharpenFilter(BufferedImage bufferedImage){
         BufferedImage newImage = deepCopy(bufferedImage);
         for(int h = 1; h < newImage.getHeight() - 1; ++h){
             for(int w = 1; w <newImage.getWidth() - 1; ++w){
@@ -127,7 +129,7 @@ class Processing {
      * @param bufferedImage image that we want to applyEffect
      * @return BufferedImage with effect
      */
-    BufferedImage grayScale(BufferedImage bufferedImage) {
+    public BufferedImage grayScale(BufferedImage bufferedImage) {
         BufferedImage newImage = deepCopy(bufferedImage);
         for(int h = 0; h < bufferedImage.getHeight(); ++h) {
             for(int w = 0; w < bufferedImage.getWidth(); ++w) {
@@ -144,7 +146,7 @@ class Processing {
      * @param bufferedImage image that we want to applyEffect
      * @return BufferedImage with effect
      */
-    BufferedImage sobelFilter(BufferedImage bufferedImage){
+    public BufferedImage sobelFilter(BufferedImage bufferedImage){
         BufferedImage newImage = deepCopy(bufferedImage);
         newImage = grayScale(newImage);
 
@@ -198,7 +200,7 @@ class Processing {
      * @param bufferedImage image that we want to applyEffect
      * @return BufferedImage with effect
      */
-    BufferedImage binarizationThreshold(BufferedImage bufferedImage, int threshold) {
+    public BufferedImage binarizationThreshold(BufferedImage bufferedImage, int threshold) {
         BufferedImage newImage = deepCopy(bufferedImage);
         for(int h = 0; h < bufferedImage.getHeight(); ++h) {
             for(int w = 0; w < bufferedImage.getWidth(); ++w) {
@@ -226,7 +228,7 @@ class Processing {
      * @param bufferedImage image that we want to applyEffect
      * @return BufferedImage with effect
      */
-    BufferedImage imageDilatation(BufferedImage bufferedImage) {
+    public BufferedImage imageDilatation(BufferedImage bufferedImage) {
         BufferedImage newImage = deepCopy(bufferedImage);
 
         for(int h = 1; h < bufferedImage.getHeight() - 1; ++h){
@@ -253,7 +255,7 @@ class Processing {
      * @param bufferedImage image that we want to applyEffect
      * @return BufferedImage with effect
      */
-    BufferedImage imageErosion(BufferedImage bufferedImage) {
+    public BufferedImage imageErosion(BufferedImage bufferedImage) {
         BufferedImage newImage = deepCopy(bufferedImage);
 
         for(int h = 1; h < bufferedImage.getHeight() - 1; ++h){

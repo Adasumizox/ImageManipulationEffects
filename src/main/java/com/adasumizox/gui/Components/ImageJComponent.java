@@ -1,3 +1,5 @@
+package com.adasumizox.gui.Components;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -19,7 +21,7 @@ public class ImageJComponent extends JComponent {
      * Simple getter that will return image that we hold in our component
      * @return Image that is currently in our component
      */
-    Image getImage() {
+    public Image getImage() {
         return image;
     }
 
@@ -27,7 +29,7 @@ public class ImageJComponent extends JComponent {
      * Simple setter that will set our Image to component
      * @param image image that we want to set in our component
      */
-    void setImage(Image image) {
+    public void setImage(Image image) {
         this.image = image;
         this.imageEffect = (BufferedImage) image;
         this.repaint();
@@ -37,7 +39,7 @@ public class ImageJComponent extends JComponent {
      * Simple getter that will return image that we are displaying in our component
      * @return BufferedImage that is currently displayed in our component
      */
-    BufferedImage getBufferedImage() {
+    public BufferedImage getBufferedImage() {
         return imageEffect;
     }
 
@@ -45,23 +47,23 @@ public class ImageJComponent extends JComponent {
      * Simple setter that will set BufferedImage
      * @param image BufferedImage that we want to display in our component
      */
-    void setBufferedImage(BufferedImage image) {
+    public void setBufferedImage(BufferedImage image) {
         this.imageEffect = image;
         this.repaint();
     }
 
     /**
-     * This simple constructor for class ImageJComponent
+     * This simple constructor for class com.adasumizox.gui.Components.ImageJComponent
      * @param image image that we want to set
      */
     ImageJComponent(Image image) {
         setImage(image);
     }
     /**
-     * This simple constructor for class ImageJComponent without parameters
+     * This simple constructor for class com.adasumizox.gui.Components.ImageJComponent without parameters
      * It declares image as a null
      */
-    ImageJComponent() {
+    public ImageJComponent() {
         setImage(null);
     }
 
