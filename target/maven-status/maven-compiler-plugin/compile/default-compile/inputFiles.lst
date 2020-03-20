@@ -1,0 +1,8 @@
+/home/adasumizox/Code/Java/ImageManipulationEffects/src/main/java/com/adasumizox/gui/Gui.java
+/home/adasumizox/Code/Java/ImageManipulationEffects/src/main/java/com/adasumizox/gui/Actions/SaveAction.java
+/home/adasumizox/Code/Java/ImageManipulationEffects/src/main/java/com/adasumizox/gui/Actions/OpenAction.java
+/home/adasumizox/Code/Java/ImageManipulationEffects/src/main/java/com/adasumizox/processing/Processing.java
+/home/adasumizox/Code/Java/ImageManipulationEffects/src/main/java/com/adasumizox/gui/Actions/ApplyAction.java
+/home/adasumizox/Code/Java/ImageManipulationEffects/src/main/java/com/adasumizox/gui/Components/ImageJComponent.java
+/home/adasumizox/Code/Java/ImageManipulationEffects/src/main/java/com/adasumizox/gui/Listeners/ItemChangeListener.java
+/home/adasumizox/Code/Java/ImageManipulationEffects/src/main/java/com/adasumizox/database/SQLiteJDBC.java
