@@ -4,6 +4,9 @@
 # Log file
 *.log
 
+# Ignore itself
+*.gitignore
+
 # BlueJ files
 *.ctxt
 
