@@ -12,6 +12,7 @@
 
 # Target directory
 */target/*
+*/target/**
 
 # Jetbrains config
 *.iml
