@@ -11,7 +11,7 @@ public class SQLiteJDBC {
         try {
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:test.db");
-            System.out.println("Opened database successfully");
+            System.err.println("Opened database successfully");
 
             stmt = c.createStatement();
             String sql = "CREATE TABLE IMAGE " +
@@ -32,7 +32,7 @@ public class SQLiteJDBC {
 
     public void insertImage(Connection c, String description, String name,  String extension , BufferedImage image) {
         Statement stmt = null;
-        if (extension == ".jpg" || extension == ".jpeg" || extension == ".png") {
+        if (extension.equals(".jpg") || extension.equals(".jpeg") || extension.equals(".png")) {
             try {
                 stmt = c.createStatement();
                 String sql = "INSERT INTO IMAGE (NAME, DESCRIPTION, EXTENSION, CONTENT)" +

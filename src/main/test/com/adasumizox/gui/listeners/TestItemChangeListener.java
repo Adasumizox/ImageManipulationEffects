@@ -1,4 +1,4 @@
-package com.adasumizox.gui.Listeners;
+package com.adasumizox.gui.listeners;
 
 public class TestItemChangeListener {
 }

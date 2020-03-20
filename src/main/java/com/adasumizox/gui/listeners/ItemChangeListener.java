@@ -1,4 +1,4 @@
-package com.adasumizox.gui.Listeners;
+package com.adasumizox.gui.listeners;
 
 import com.adasumizox.gui.Components.ImageJComponent;
 import com.adasumizox.processing.Processing;

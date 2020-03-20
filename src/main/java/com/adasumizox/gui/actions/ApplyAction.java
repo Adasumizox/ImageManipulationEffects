@@ -1,4 +1,4 @@
-package com.adasumizox.gui.Actions;
+package com.adasumizox.gui.actions;
 
 import com.adasumizox.gui.Components.ImageJComponent;
 

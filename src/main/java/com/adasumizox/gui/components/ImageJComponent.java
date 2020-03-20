@@ -1,4 +1,4 @@
-package com.adasumizox.gui.Components;
+package com.adasumizox.gui.components;
 
 import javax.swing.*;
 import java.awt.*;
