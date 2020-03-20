@@ -2,8 +2,11 @@ package com.adasumizox.database;
 
 import java.awt.image.BufferedImage;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SQLiteJDBC {
+    private static final Logger LOGGER = Logger.getLogger(SQLiteJDBC.class.getName());
     public static void main(String args[]) {
         Connection c = null;
         Statement stmt = null;
@@ -11,7 +14,7 @@ public class SQLiteJDBC {
         try {
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:test.db");
-            System.err.println("Opened database successfully");
+            LOGGER.log(Level.FINE, "Opened database successfully");
 
             stmt = c.createStatement();
             String sql = "CREATE TABLE IMAGE " +
@@ -24,10 +27,10 @@ public class SQLiteJDBC {
             stmt.close();
             c.close();
         } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            LOGGER.log(Level.SEVERE, e.toString(), e);
             System.exit(0);
         }
-        System.out.println("Table created successfully");
+        LOGGER.log(Level.FINE, "Table created successfully");
     }
 
     public void insertImage(Connection c, String description, String name,  String extension , BufferedImage image) {
@@ -38,7 +41,7 @@ public class SQLiteJDBC {
                 String sql = "INSERT INTO IMAGE (NAME, DESCRIPTION, EXTENSION, CONTENT)" +
                              "VALUES ('" + name + "', '" + description + "', '" + extension + "', " + image.toString() + ")";
             } catch (Exception e) {
-                System.err.println(e.getClass().getName() + ": " + e.getMessage());
+                LOGGER.log(Level.SEVERE, e.toString(), e);
                 System.exit(0);
             }
         }

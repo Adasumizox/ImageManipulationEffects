@@ -73,6 +73,7 @@ public class ImageJComponent extends JComponent {
      * We uses that to print our image on screen
      * @param g Graphics object
      */
+    @Override
     public void paint(Graphics g) {
         g.drawImage(imageEffect, 0, 0, null);
     }

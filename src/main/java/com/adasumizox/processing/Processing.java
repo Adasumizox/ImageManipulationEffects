@@ -3,7 +3,6 @@ package com.adasumizox.processing;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
-import java.awt.image.DataBufferByte;
 import java.awt.image.WritableRaster;
 import java.util.Arrays;
 /**
@@ -36,7 +35,9 @@ public class Processing {
         BufferedImage newImage = deepCopy(bufferedImage);
         for(int h = 1; h < newImage.getHeight() - 1; ++h){
             for(int w = 1; w < newImage.getWidth() - 1; ++w){
-                double red = 0, green = 0, blue = 0;
+                double red = 0,
+                       green = 0,
+                       blue = 0;
                 for(int currenth = h - 1; currenth < h + 2; ++currenth){
                     for(int currentw = w - 1; currentw < w + 2; ++currentw) {
                         Color c = new Color(bufferedImage.getRGB(currentw, currenth));

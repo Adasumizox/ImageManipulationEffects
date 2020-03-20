@@ -1,6 +1,6 @@
 package com.adasumizox.gui.actions;
 
-import com.adasumizox.gui.Components.ImageJComponent;
+import com.adasumizox.gui.components.ImageJComponent;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -48,7 +48,7 @@ public class SaveAction extends AbstractAction {
      * @param name Path that we want to get extension from
      */
     private String getFileExtension(String name) {
-        int lastIndexOf = name.lastIndexOf(".");
+        int lastIndexOf = name.lastIndexOf('.');
         if (lastIndexOf == -1) {
             return ""; // empty extension
         }

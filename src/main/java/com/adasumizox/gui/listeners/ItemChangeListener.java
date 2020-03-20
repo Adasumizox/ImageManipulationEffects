@@ -1,6 +1,6 @@
 package com.adasumizox.gui.listeners;
 
-import com.adasumizox.gui.Components.ImageJComponent;
+import com.adasumizox.gui.components.ImageJComponent;
 import com.adasumizox.processing.Processing;
 
 import java.awt.event.ItemEvent;
@@ -61,6 +61,9 @@ public class ItemChangeListener implements ItemListener {
                     break;
                 case "Erosion":
                     component.setBufferedImage(p.imageErosion((BufferedImage) this.component.getImage()));
+                    break;
+                default:
+                    component.setBufferedImage((BufferedImage) component.getImage());
                     break;
             }
         }

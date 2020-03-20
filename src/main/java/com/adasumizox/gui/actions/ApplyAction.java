@@ -1,6 +1,6 @@
 package com.adasumizox.gui.actions;
 
-import com.adasumizox.gui.Components.ImageJComponent;
+import com.adasumizox.gui.components.ImageJComponent;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
