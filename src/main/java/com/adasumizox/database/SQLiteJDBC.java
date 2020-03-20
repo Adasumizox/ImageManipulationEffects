@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 public class SQLiteJDBC {
     private static final Logger LOGGER = Logger.getLogger(SQLiteJDBC.class.getName());
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         Connection c = null;
         Statement stmt = null;
 
