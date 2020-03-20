@@ -47,6 +47,4 @@ public class SQLiteJDBC {
     public void selectImage() {
 
     }
-
-    //public void
 }
