@@ -35,9 +35,9 @@ public class Processing {
         BufferedImage newImage = deepCopy(bufferedImage);
         for(int h = 1; h < newImage.getHeight() - 1; ++h){
             for(int w = 1; w < newImage.getWidth() - 1; ++w){
-                double red = 0,
-                       green = 0,
-                       blue = 0;
+                double red = 0;
+                double green = 0;
+                double blue = 0;
                 for(int currenth = h - 1; currenth < h + 2; ++currenth){
                     for(int currentw = w - 1; currentw < w + 2; ++currentw) {
                         Color c = new Color(bufferedImage.getRGB(currentw, currenth));
@@ -112,13 +112,24 @@ public class Processing {
                 blue = blue - down.getBlue();
                 blue = blue - left.getBlue() - right.getBlue();
 
-                if(red > 255) red = 255;
-                if(green > 255) green = 255;
-                if(blue > 255) blue = 255;
+                if(red > 255) {
+                    red = 255;
+                } else if(red < 0) {
+                    red = 0;
+                }
 
-                if(red < 0) red = 0;
-                if(green < 0) green = 0;
-                if(blue < 0) blue = 0;
+                if(green > 255){
+                    green = 255;
+                } else if(green < 0) {
+                    green = 0;
+                }
+
+                if(blue > 255) {
+                    blue = 255;
+                } else if(blue < 0) {
+                    blue = 0;
+                }
+
                 newImage.setRGB(w, h, new Color(red, green, blue).getRGB());
             }
         }

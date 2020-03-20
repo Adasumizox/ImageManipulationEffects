@@ -9,6 +9,9 @@ import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * Simple Action that opens file using JavaFileChooser
  * Action seperate functionality and state from components
@@ -18,6 +21,7 @@ import java.io.IOException;
  * @version 0.1.0
  */
 public class OpenAction extends AbstractAction {
+    private static final Logger LOGGER = Logger.getLogger(OpenAction.class.getName());
     private Image image;
     private ImageJComponent component;
 
@@ -71,7 +75,7 @@ public class OpenAction extends AbstractAction {
                 setImage(ImageIO.read(jfc.getSelectedFile()));
                 update(this.component);
             } catch (IOException ex) {
-                ex.printStackTrace();
+                LOGGER.log(Level.SEVERE, e.toString(), e);
             }
         }
     }

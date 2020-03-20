@@ -33,7 +33,7 @@ public class SQLiteJDBC {
         LOGGER.log(Level.FINE, "Table created successfully");
     }
 
-    public void insertImage(Connection c, String description, String name,  String extension , BufferedImage image) {
+    /*public void insertImage(Connection c, String description, String name,  String extension , BufferedImage image) {
         Statement stmt = null;
         if (extension.equals(".jpg") || extension.equals(".jpeg") || extension.equals(".png")) {
             try {
@@ -45,9 +45,9 @@ public class SQLiteJDBC {
                 System.exit(0);
             }
         }
-    }
+    }*/
 
-    public void selectImage() {
+    /*public void selectImage() {
 
-    }
+    }*/
 }

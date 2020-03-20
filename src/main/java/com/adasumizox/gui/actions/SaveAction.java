@@ -11,6 +11,9 @@ import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * Simple Action that saves file using JavaFileChooser
  * Action seperate functionality and state from components
@@ -20,6 +23,7 @@ import java.io.IOException;
  * @version 0.1.0
  */
 public class SaveAction extends AbstractAction {
+    private static final Logger LOGGER = Logger.getLogger(SaveAction.class.getName());
     private ImageJComponent component;
 
     /**
@@ -79,7 +83,7 @@ public class SaveAction extends AbstractAction {
                 BufferedImage image = (BufferedImage) getComponentImage(this.component);
                 ImageIO.write(image, extension, file);
             } catch(IOException ex) {
-                ex.printStackTrace();
+                LOGGER.log(Level.SEVERE, e.toString(), e);
             }
         }
     }
