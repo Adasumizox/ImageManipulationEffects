@@ -18,11 +18,11 @@ public class SQLiteJDBC {
 
             stmt = c.createStatement();
             String sql = "CREATE TABLE IMAGE " +
-                            "(ID INT PRIMARY KEY AUTOINCREMENT NOT NULL," +
-                            " NAME                        TEXT NOT NULL," +
-                            " DESCRIPTION                 TEXT NOT NULL," +
-                            " EXTENSION                   TEXT NOT NULL," +
-                            " CONTENT                     BLOB NOT NULL)";
+                    "(ID INT PRIMARY KEY AUTOINCREMENT NOT NULL," +
+                    " NAME                        TEXT NOT NULL," +
+                    " DESCRIPTION                 TEXT NOT NULL," +
+                    " EXTENSION                   TEXT NOT NULL," +
+                    " CONTENT                     BLOB NOT NULL)";
             stmt.executeUpdate(sql);
             stmt.close();
             c.close();
@@ -48,6 +48,5 @@ public class SQLiteJDBC {
     }*/
 
     /*public void selectImage() {
-
     }*/
 }
