@@ -18,6 +18,29 @@ public class ImageJComponent extends JComponent {
     private BufferedImage imageEffect = null;
 
     /**
+     * Simple random image creation
+     * @return Random image
+     */
+    private Image generateExampleImage() {
+        int width = 300;
+        int height = 300;
+        BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        for(int y = 0; y < height; y++){
+            for(int x = 0; x < width; x++){
+                int a = (int)(Math.random()*256);
+                int r = (int)(Math.random()*256);
+                int g = (int)(Math.random()*256);
+                int b = (int)(Math.random()*256);
+
+                int p = (a<<24) | (r<<16) | (g<<8) | b;
+
+                img.setRGB(x, y, p);
+            }
+        }
+        return img;
+    }
+
+    /**
      * Simple getter that will return image that we hold in our component
      * @return Image that is currently in our component
      */
@@ -61,10 +84,10 @@ public class ImageJComponent extends JComponent {
     }
     /**
      * This simple constructor for class com.adasumizox.gui.Components.ImageJComponent without parameters
-     * It declares image as a null
+     * It declares image as a random image
      */
     public ImageJComponent() {
-        setImage(null);
+        setImage(generateExampleImage());
     }
 
     /**
@@ -75,6 +98,7 @@ public class ImageJComponent extends JComponent {
      */
     @Override
     public void paint(Graphics g) {
+        super.paintComponent(g);
         g.drawImage(imageEffect, 0, 0, null);
     }
 }
