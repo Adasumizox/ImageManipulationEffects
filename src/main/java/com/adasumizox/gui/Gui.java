@@ -55,6 +55,14 @@ public class Gui extends GuiFrame{
         effects.addItemListener(new ItemChangeListener(imageComponent));
         Action applyAction = new com.adasumizox.gui.actions.ApplyAction(imageComponent, "Apply", "This is button for saving effects", KeyEvent.VK_A);
         final JButton applyBtn = new JButton(applyAction);
+
+        //Setting names for tests
+        applyBtn.setName("applyBtn");
+        effects.setName("effectsCombo");
+        fileMenu.setName("fileMenu");
+        menuItemOpen.setName("menuItemOpen");
+        menuItemSave.setName("menuItemSave");
+
         footer.add(label);
         footer.add(effects);
         footer.add(applyBtn);
