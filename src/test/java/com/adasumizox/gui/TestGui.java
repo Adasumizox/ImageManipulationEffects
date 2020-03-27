@@ -45,6 +45,63 @@ public class TestGui {
         window.deiconify();
     }
 
+    @Test
+    public void shouldBeAbleToApplyEffect() {
+        window.button("applyBtn").click();
+    }
+
+    @Test
+    public void shouldBeAbleToChooseAllEffects() {
+        window.comboBox("effectsCombo").selectItem(0);
+        window.comboBox("effectsCombo").selectItem(1);
+        window.comboBox("effectsCombo").selectItem(2);
+        window.comboBox("effectsCombo").selectItem(3);
+        window.comboBox("effectsCombo").selectItem(4);
+        window.comboBox("effectsCombo").selectItem(5);
+        window.comboBox("effectsCombo").selectItem(6);
+        window.comboBox("effectsCombo").selectItem(7);
+        window.comboBox("effectsCombo").selectItem(8);
+    }
+
+    @Test
+    public void shouldBeAbleToChooseAndApplyAllEffects() {
+        window.comboBox("effectsCombo").selectItem(0);
+        window.button("applyBtn").click();
+        window.comboBox("effectsCombo").selectItem(1);
+        window.button("applyBtn").click();
+        window.comboBox("effectsCombo").selectItem(2);
+        window.button("applyBtn").click();
+        window.comboBox("effectsCombo").selectItem(3);
+        window.button("applyBtn").click();
+        window.comboBox("effectsCombo").selectItem(4);
+        window.button("applyBtn").click();
+        window.comboBox("effectsCombo").selectItem(5);
+        window.button("applyBtn").click();
+        window.comboBox("effectsCombo").selectItem(6);
+        window.button("applyBtn").click();
+        window.comboBox("effectsCombo").selectItem(7);
+        window.button("applyBtn").click();
+        window.comboBox("effectsCombo").selectItem(8);
+        window.button("applyBtn").click();
+    }
+
+    @Test
+    public void shouldBeAbleToOpenMenu() {
+        window.menuItem("fileMenu").click();
+    }
+
+    @Test
+    public void shouldBeAbleToChooseLoadFile() {
+        window.menuItem("fileMenu").click();
+        window.menuItem("menuItemOpen").click();
+    }
+
+    @Test
+    public void shouldBeAbleToChooseSaveFile() {
+        window.menuItem("fileMenu").click();
+        window.menuItem("menuItemSave").click();
+    }
+
     @After
     public void tearDown() {
         window.cleanUp();

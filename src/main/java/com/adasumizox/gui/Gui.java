@@ -33,7 +33,7 @@ public class Gui extends GuiFrame{
     private static final long serialVersionUID = 1L;
     protected static final String[] IMPLEMENTED_EFFECTS = {"Original","Grayscale","Blurred","Binarization", "MedianFilter", "SharpenFilter", "SobelFilter", "Dilatation", "Erosion"};
 
-    // Y'all should be in init
+    // TODO: Y'all should be in init
     public Gui() {
         setMiglayout(new LC().wrapAfter(1), new AC().align("center"), new AC());
 
@@ -44,7 +44,7 @@ public class Gui extends GuiFrame{
         menuBar.add(fileMenu);
         Action openAction = new OpenAction(imageComponent ,"Open", "This is a file open menu option", KeyEvent.VK_O);
         final JMenuItem menuItemOpen = new JMenuItem(openAction);
-        Action saveAction = new SaveAction(imageComponent, "Save", "This is a file save menu option", KeyEvent.VK_S);
+        Action saveAction = new SaveAction(imageComponent, "Save As", "This is a file save menu option", KeyEvent.VK_S);
         final JMenuItem menuItemSave = new JMenuItem(saveAction);
         fileMenu.add(menuItemOpen);
         fileMenu.add(menuItemSave);
@@ -55,6 +55,14 @@ public class Gui extends GuiFrame{
         effects.addItemListener(new ItemChangeListener(imageComponent));
         Action applyAction = new com.adasumizox.gui.actions.ApplyAction(imageComponent, "Apply", "This is button for saving effects", KeyEvent.VK_A);
         final JButton applyBtn = new JButton(applyAction);
+
+        //Setting names for tests
+        applyBtn.setName("applyBtn");
+        effects.setName("effectsCombo");
+        fileMenu.setName("fileMenu");
+        menuItemOpen.setName("menuItemOpen");
+        menuItemSave.setName("menuItemSave");
+
         footer.add(label);
         footer.add(effects);
         footer.add(applyBtn);
