@@ -86,7 +86,6 @@ public class SQLiteJDBC {
                 pstmt.setString(2, name);
                 pstmt.setString(3, extension);
                 // Wow converting image to bytes wow such a good work.
-                // TODO: make buffer or something idk
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 ImageIO.write(image, extension.substring(1), baos);
                 pstmt.setBytes(4, baos.toByteArray());
