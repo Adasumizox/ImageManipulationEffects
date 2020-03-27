@@ -19,13 +19,51 @@ public class TestProcessing {
     }
 
     @Test
-    void testBlurForWidthChange() {
+    void testBlurForDimensionChange() {
         Assertions.assertEquals(bi.getWidth(), p.blur(bi).getWidth());
+        Assertions.assertEquals(bi.getHeight(), p.blur(bi).getHeight());
     }
 
     @Test
-    void testBlurForHeightChange() {
-        Assertions.assertEquals(bi.getHeight(), p.blur(bi).getHeight());
+    void testMedianFilterForDimensionChange() {
+        Assertions.assertEquals(bi.getWidth(), p.medianFilter(bi).getWidth());
+        Assertions.assertEquals(bi.getHeight(), p.medianFilter(bi).getHeight());
+    }
+
+    @Test
+    void testSharpenFilterForDimensionChange() {
+        Assertions.assertEquals(bi.getWidth(), p.sharpenFilter(bi).getWidth());
+        Assertions.assertEquals(bi.getHeight(), p.sharpenFilter(bi).getHeight());
+    }
+
+    @Test
+    void testGrayScaleForDimensionChange() {
+        Assertions.assertEquals(bi.getWidth(), p.grayScale(bi).getWidth());
+        Assertions.assertEquals(bi.getHeight(), p.grayScale(bi).getHeight());
+    }
+
+    @Test
+    void testSobelFilterForDimensionChange() {
+        Assertions.assertEquals(bi.getWidth(), p.sobelFilter(bi).getWidth());
+        Assertions.assertEquals(bi.getHeight(), p.sobelFilter(bi).getHeight());
+    }
+
+    @Test
+    void testBinarizationThresholdFilterForDimensionChange() {
+        Assertions.assertEquals(bi.getWidth(), p.binarizationThreshold(bi, 255/2).getWidth());
+        Assertions.assertEquals(bi.getHeight(), p.binarizationThreshold(bi, 255/2).getHeight());
+    }
+
+    @Test
+    void testImageDilatationForDimensionChange() {
+        Assertions.assertEquals(bi.getWidth(), p.imageDilatation(bi).getWidth());
+        Assertions.assertEquals(bi.getHeight(), p.imageDilatation(bi).getHeight());
+    }
+
+    @Test
+    void testImageErosionForDimensionChange() {
+        Assertions.assertEquals(bi.getWidth(), p.imageErosion(bi).getWidth());
+        Assertions.assertEquals(bi.getHeight(), p.imageErosion(bi).getHeight());
     }
 
     @Test
@@ -34,43 +72,13 @@ public class TestProcessing {
     }
 
     @Test
-    void testMedianFilterForWidthChange() {
-        Assertions.assertEquals(bi.getWidth(), p.medianFilter(bi).getWidth());
-    }
-
-    @Test
-    void testMedianFilterForHeightChange() {
-        Assertions.assertEquals(bi.getHeight(), p.medianFilter(bi).getHeight());
-    }
-
-    @Test
     void testMedianFilterForDataChangeOnlyBelow3px() {
         Assertions.assertNotEquals(bi.getRGB(0, 0), p.medianFilter(bi).getRGB(0, 0));
     }
 
     @Test
-    void testSharpenFilterForWidthChange() {
-        Assertions.assertEquals(bi.getWidth(), p.sharpenFilter(bi).getWidth());
-    }
-
-    @Test
-    void testSharpenFilterForHeightChange() {
-        Assertions.assertEquals(bi.getHeight(), p.sharpenFilter(bi).getHeight());
-    }
-
-    @Test
     void testSharpenFilterForDataChangeOnlyBelow3px() {
         Assertions.assertNotEquals(bi.getRGB(0, 0), p.sharpenFilter(bi).getRGB(0, 0));
-    }
-
-    @Test
-    void testGrayScaleForWidthChange() {
-        Assertions.assertEquals(bi.getWidth(), p.grayScale(bi).getWidth());
-    }
-
-    @Test
-    void testGrayScaleForHeightChange() {
-        Assertions.assertEquals(bi.getHeight(), p.grayScale(bi).getHeight());
     }
 
     // It's one of tests that don't work in 3x3 px frames but works on every pixel
@@ -80,33 +88,23 @@ public class TestProcessing {
     }
 
     @Test
-    void testSobelFilterForWidthChange() {
-        Assertions.assertEquals(bi.getWidth(), p.sobelFilter(bi).getWidth());
-    }
-
-    @Test
-    void testSobelFilterForHeightChange() {
-        Assertions.assertEquals(bi.getHeight(), p.sobelFilter(bi).getHeight());
-    }
-
-    @Test
     void testSobelFilterForDataChangeOnlyBelow3px() {
         Assertions.assertNotEquals(bi.getRGB(0, 0), p.sobelFilter(bi).getRGB(0, 0));
     }
 
     @Test
-    void testBinarizationThresholdFilterForWidthChange() {
-        Assertions.assertEquals(bi.getWidth(), p.binarizationThreshold(bi, 255/2).getWidth());
-    }
-
-    @Test
-    void testBinarizationThresholdForHeightChange() {
-        Assertions.assertEquals(bi.getHeight(), p.binarizationThreshold(bi, 255/2).getHeight());
-    }
-
-    @Test
     void testBinarizationThresholdForDataChangeOnlyBelow3px() {
         Assertions.assertNotEquals(bi.getRGB(0, 0), p.binarizationThreshold(bi, 255/2).getRGB(0, 0));
+    }
+
+    @Test
+    void testImageDilatationForDataChangeOnlyBelow3px() {
+        Assertions.assertNotEquals(bi.getRGB(0, 0), p.imageDilatation(bi).getRGB(0,0));
+    }
+
+    @Test
+    void testImageErosionForDataChangeOnlyBelow3px() {
+        Assertions.assertNotEquals(bi.getRGB(0,0), p.imageDilatation(bi).getRGB(0, 0));
     }
 
 
