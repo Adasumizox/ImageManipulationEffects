@@ -33,7 +33,7 @@ public class Gui extends GuiFrame{
     private static final long serialVersionUID = 1L;
     protected static final String[] IMPLEMENTED_EFFECTS = {"Original","Grayscale","Blurred","Binarization", "MedianFilter", "SharpenFilter", "SobelFilter", "Dilatation", "Erosion"};
 
-    // Y'all should be in init
+    // TODO: Y'all should be in init
     public Gui() {
         setMiglayout(new LC().wrapAfter(1), new AC().align("center"), new AC());
 

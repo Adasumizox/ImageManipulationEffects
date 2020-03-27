@@ -1,5 +1,7 @@
 package com.adasumizox.database;
 
+import org.imgscalr.Scalr;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -14,7 +16,7 @@ public class Database implements imageDAO {
     private static final Logger LOGGER = Logger.getLogger(Database.class.getName());
     private static Connection c;
 
-    // TODO: Add thumbnails for photo and make component for showing them / Loading images
+    // TODO: make component for showing them / Loading images
     // TODO: Add component for saving photo and decide if instert it or update it based on name or id idk
 
     public Connection getConnection() {
@@ -32,7 +34,7 @@ public class Database implements imageDAO {
     }
 
     private Connection databaseInit() {
-        try (Connection c = DriverManager.getConnection("jdbc:sqlite:test7.db")) {
+        try (Connection c = DriverManager.getConnection("jdbc:sqlite:test.db")) {
             LOGGER.log(Level.FINE, "Opened database successfully");
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE, e.toString(), e);
@@ -47,7 +49,8 @@ public class Database implements imageDAO {
                 " name                        TEXT NOT NULL," +
                 " description                 TEXT NOT NULL," +
                 " extension                   TEXT NOT NULL," +
-                " content                     BLOB NOT NULL)";
+                " content                     BLOB NOT NULL," +
+                " thumbnail                   BLOB NOT NULL)";
         try (Statement stmt = c.createStatement()){
             stmt.execute(sql);
         } catch (SQLException e) {
@@ -57,7 +60,7 @@ public class Database implements imageDAO {
     }
 
     public void selectImages(Connection c) {
-        String sql = "SELECT id, name, description, extension, content " +
+        String sql = "SELECT id, name, description, extension, content, thumbnail " +
                      "FROM Image";
         try (Statement stmt = c.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
@@ -66,7 +69,8 @@ public class Database implements imageDAO {
                                    rs.getString("name") + "\t" +
                                    rs.getString("description") + "\t" +
                                    rs.getString("extension") + "\t" +
-                                   rs.getBytes("content"));
+                                   rs.getBytes("content") + "\t" +
+                                   rs.getBytes("thumbnail"));
             }
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, e.toString(), e);
@@ -75,7 +79,7 @@ public class Database implements imageDAO {
     }
 
     public void selectImage(Connection c, int id) {
-        String sql = "SELECT id, name, description, extension, content " +
+        String sql = "SELECT id, name, description, extension, content, thumbnail " +
                      "FROM Image " +
                      "WHERE id = ?";
         try (PreparedStatement pstmt = c.prepareStatement(sql)){
@@ -87,7 +91,8 @@ public class Database implements imageDAO {
                         rs.getString("name") + "\t" +
                         rs.getString("description") + "\t" +
                         rs.getString("extension") + "\t" +
-                        rs.getBlob("content"));
+                        rs.getBytes("content") + "\t" +
+                        rs.getBytes("thumbnail"));
             }
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, e.toString(), e);
@@ -96,16 +101,21 @@ public class Database implements imageDAO {
     }
 
     public void insertImage(Connection c, String description, String name,  String extension , BufferedImage image) {
-        String sql = "INSERT INTO Image(description, name, extension, content) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO Image(description, name, extension, content, thumbnail) VALUES (?,?,?,?,?)";
         if (extension.equals(".jpg") || extension.equals(".jpeg") || extension.equals(".png")) {
             try (PreparedStatement pstmt = c.prepareStatement(sql)){
                 pstmt.setString(1, description);
                 pstmt.setString(2, name);
                 pstmt.setString(3, extension);
+                // Scaling is fairly simple but we have libs for that
+                BufferedImage thumbnail = Scalr.resize(image, 150);
                 // Wow converting image to bytes wow such a good work.
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 ImageIO.write(image, extension.substring(1), baos);
                 pstmt.setBytes(4, baos.toByteArray());
+                baos = new ByteArrayOutputStream();
+                ImageIO.write(thumbnail, extension.substring(1), baos);
+                pstmt.setBytes(5, baos.toByteArray());
                 pstmt.executeUpdate();
             } catch (Exception e) {
                 LOGGER.log(Level.SEVERE, e.toString(), e);
